@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->enum('role', ['admin', 'customer'])->default('customer'); 
-            $table->rememberToken();
+            $table->string('address');
+            $table->string('city');
+            $table->string('state');
+            $table->string('zipcode');
+            $table->unsignedBigInteger('customer_id');
             $table->timestamps();
-        });
+        });         
     }
 
     /**
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('addresses');
     }
 };
