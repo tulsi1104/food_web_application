@@ -1,33 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Log In</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body> 
-     <div class="wrapper">
-         <form class="form" method="post" action="#">
-            <div class="signin"> 
+<body>
+    <div class="wrapper">
+        <form class="form" id="loginForm" method="POST" action="{{ route('loginuser.login') }}">
+            @csrf
+            <div class="headline">
+                <h1>Login</h1>
+            </div>
+            <div class="signin">
                 <div class="form-group">
-                    <input type="email" placeholder="Email" required="">
+                    <input type="email" name="email" id="email" placeholder="Email" required autocomplete="email">
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Password" required="">
+                    <input type="password" name="password" id="password" placeholder="Password" required autocomplete="current-password">
                 </div>
                 <div class="forget-password">
                     <div class="check-box">
-                        <input type="checkbox" id="checkbox">
-                        <label for="checkbox">Remember me</label>
+                        <input type="checkbox" id="remember-me" name="remember_me">
+                        <label for="remember-me">Remember me</label>
                     </div>
-                    <a href="#">Forget password?</a>
+                    <a href="#">Forgot password?</a>
                 </div>
-                <button type="submit" class="btn">LOGIN</button>
+                <button type="submit" class="btn">Login</button>
                 <div class="account-exist">
-                    Create New a account? <a href="{{route('signup.signup')}}" id="signup">Signup</a>
+                    Don't have an account? <a href="{{ route('signup.signup') }}">Register</a>
                 </div>
             </div>
-         </form>
-     </div>
+        </form>
+    </div>
+
 </body>
 </html>

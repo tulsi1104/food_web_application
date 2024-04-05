@@ -1,33 +1,38 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Log In</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body> 
-     <div class="wrapper">
-         <form class="form" method="post" action="#">
-            <div class="signin"> 
-                <div class="form-group">
-                    <input type="email" placeholder="Email" required="">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" required="">
-                </div>
-                <div class="forget-password">
-                    <div class="check-box">
-                        <input type="checkbox" id="checkbox">
-                        <label for="checkbox">Remember me</label>
-                    </div>
-                    <a href="#">Forget password?</a>
-                </div>
-                <button type="submit" class="btn">LOGIN</button>
-                <div class="account-exist">
-                    Create New a account? <a href="{{route('login.login')}}" id="signup">Signup</a>
-                </div>
+<body>
+    <div class="wrapper">
+        <form class="form" method="POST" action="{{route('registercustomer.register')}}">
+            @csrf
+            <div class="headline">
+                <h1>Register</h1>
             </div>
-         </form>
-     </div>
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Name" required="">
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email" required="" autocomplete="email">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password" required="" autocomplete="current-password">
+            </div>
+            <div class="form-group">
+                <input type="text" name="phone_number" placeholder="Phone Number">
+            </div>
+            <div class="form-group">
+                <input type="text" name="address" placeholder="Address">
+            </div>
+
+            <button type="submit" class="btn">Register</button>
+            <div class="account-exist">
+                Already have an account? <a href="{{ route('login.login') }}">Login</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

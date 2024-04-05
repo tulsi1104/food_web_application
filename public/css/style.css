@@ -38,7 +38,6 @@ body{
     left:0;
     right:0;
     bottom:0;
-    background-image: url("images/bg-1.svg");
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -124,31 +123,3 @@ body{
     font-size: 15px;
     color:var(--black-color);
 } 
-.signup.inActive{
-    display:none;
-}
-.signin{
-    display:none;
-}
-.signin.active{
-    display:block;
-}
-
-@media (max-width:1030px){
-    .wrapper::before{
-        left:-25%;
-        min-height: 60vh;
-        height:500px;
-    }
-}
-@media (max-width:767px){
-    .wrapper{
-        max-width: 550px;
-    }
-    .wrapper .headline h1{
-        font-size: 22px;
-        line-height:25px;
-    }
-}
-        
-      

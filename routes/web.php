@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,10 +20,20 @@ Route::get('/', function () {
 
 Route::view('/login','login')->name('login.login');
 Route::view('/signup','signup')->name('signup.signup');
-Route::middleware(['admin'])->group(function () {
 
-});
+Route::post('registercustomer',[AuthController::class,'register'])->name('registercustomer.register');
+Route::post('loginuser',[AuthController::class,'login'])->name('loginuser.login');
 
-Route::middleware(['customer'])->group(function () {
+Route::view('app','userlayout.app')->name('userlayout.app');
+
+Route::middleware('auth')->group(function () {
+    Route::view('app','userlayout.app')->name('userlayout.app');
+    Route::post('logout',[AuthController::class,' logout'])->name('logout.logout');
+    Route::view('category','user.category')->name('user.category');
+    Route::view('order','user.order')->name('user.order');
+    // Route::view('myorder','user.myorders')->name('user.myorders');
+    Route::view('shoppingcart','user.shoppingcart')->name('user.shoppingcart');
+    Route::view('test','admin.products')->name('admin.products');
+    Route::view('addproduct','admin.addproduct')->name('admin.addproduct');
 
 });
