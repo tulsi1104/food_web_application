@@ -27,6 +27,26 @@
           font-size: 3.5rem;
         }
       }
+      .custom-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    /* Sticky search bar */
+    .search-bar {
+      position: fixed;
+      top: 56px; /* Adjust this value based on the height of the navbar */
+      width: 100%;
+      background-color: #fff; /* Optional: Change background color as needed */
+      z-index: 999;
+    }
+
+    /* Adjust content position */
+    .content-wrapper {
+      margin-top: 120px; /* Adjust this value based on the combined height of the navbar and search bar */
+    }
     </style>
 
 </head>
@@ -69,7 +89,8 @@
                 <div class="col">
                     <ul class="nav my-2 justify-content-end text-small">
                         <li class="nav-item">
-                        <a href="#" class="nav-link text-white" id="userEmailLink">
+                        <a href="#" class="nav-link text-white">
+                            {{Auth::user()->name}}
                         </a>
                         </li>
                         <li class="nav-item">
@@ -113,7 +134,7 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-body">
-                        @yield('content')
+                        {{$slot}}
                     </div>    
                 </div>
         </div>
@@ -139,25 +160,6 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('js/adminlte.min.js') }}"></script>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-
-                const data = @json($data);
-
-                    localStorage.setItem('id', data.id);
-                    localStorage.setItem('name', data.name);
-                    localStorage.setItem('email', data.email);
-                    localStorage.setItem('role', data.role);
-                    localStorage.setItem('token', data.token);
-                    const userEmail = localStorage.getItem('email');
-                    // Check if userEmail exists in localStorage
-                    if (userEmail) {
-                        // Update the text of the User Email Link
-                        document.getElementById('userEmailLink').innerText = userEmail;
-                    }
-            });
-
-        </script>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 // Add event listener to the logout form

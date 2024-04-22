@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
@@ -150,6 +151,7 @@
         align-items: center;
         padding: 16px;
         margin-top: auto;
+        height:auto;
         }
         .account-info-picture {
         width: 32px;
@@ -595,7 +597,6 @@
         }
         .gridView .product-cell:not(.image) {
         display: flex;
-        align-items: center;
         justify-content: space-between;
         }
         .gridView .product-cell.image span {
@@ -613,6 +614,38 @@
         .gridView .cell-label {
         opacity: 0.6;
         }
+        .profile-dropdown-list{
+            list-style-type: none; /* Remove bullets/dots */
+            position: absolute;
+            bottom: 64px;
+            width:auto;
+            left:0;
+            background-color:black;
+            border radius: 10px;
+            box-shadow:black;
+            max-height:0;
+            overflow:hidden;
+            transition:max-height 0.5s;
+            padding: 0; /* Remove default padding */
+            margin: 0;
+            display:center;
+            align-items:center;
+        }
+        .profile-dropdown-list.active{
+            max-height: 500px;
+        }
+        .profile-dropdown-list-item{
+            padding: 0.5rem;
+        }
+        .profile-dropdown-list-item input{
+            display:flex;
+            align-items:center;
+            text-decoration:none;
+            font-size:0.9rem;
+            font-weight:500;
+            color:black;
+        }
+        
 </style>
 <body>
     <div class="app-container">
@@ -624,44 +657,73 @@
         </div>
         <ul class="sidebar-list">
         <li class="sidebar-list-item">
-            <a href="#">
+            <a href="{{route('showcustomers.Customers')}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             <span>Home</span>
             </a>
         </li>
-        <li class="sidebar-list-item active">
-            <a href="#">
+        <li class="sidebar-list-item ">
+            <a href="{{route('listproduct.listproduct')}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             <span>Products</span>
             </a>
         </li>
-        <li class="sidebar-list-item">
-            <a href="#">
+        <li class="sidebar-list-item ">
+            <a href="{{route('listcategory.listcategory')}}" onclick="activateLink(this)">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pie-chart"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
-            <span>Statistics</span>
+            <span>Categories</span>
+            </a>
+        </li>
+        <li class="sidebar-list-item">
+            <a href="{{route('admincustomer.AdminCustomer')}}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span>Customers</span>
             </a>
         </li>
         <li class="sidebar-list-item">
             <a href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
-            <span>Inbox</span>
+            <span>Payments</span>
+            </a>
+        </li>
+        <li class="sidebar-list-item">
+            <a href="{{route('Orders.Orders')}}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span>Pending Orders</span>
             </a>
         </li>
         <li class="sidebar-list-item">
             <a href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-            <span>Notifications</span>
+            <span>Delivered Orders</span>
             </a>
         </li>
         </ul>
         <div class="account-info">
-        <div class="account-info-picture">
-            <img src="https://images.unsplash.com/photo-1527736947477-2790e28f3443?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHx3b21hbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="Account">
-        </div>
-        <div class="account-info-name" id="username">{{Auth::user()->name}}</div>
-        <button class="account-info-more">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-        </button>
+            <ul class="profile-dropdown-list">
+                <li class="profile-dropdown-list-item">
+                    <input type="text" name="name" value="{{Auth::user()->name}}"/>
+                </li>
+                <li class="profile-dropdown-list-item">
+                    <input type="email" name="email" value="{{Auth::user()->email}}"/>
+                </li>
+                <li class="profile-dropdown-list-item">
+                    <button>Change Profile</button>
+                </li>
+                <li class="profile-dropdown-list-item">
+                    <form action="{{ route('logout.logout') }}" method="POST" id="logoutForm">
+                        @csrf
+                        <button>Log Out</button>
+                    </form>
+                </li>        
+            </ul>
+            <div class="account-info-picture">
+                <img src="https://images.unsplash.com/photo-1527736947477-2790e28f3443?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHx3b21hbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="Account">
+            </div>
+            <div class="account-info-name" id="username">{{Auth::user()->name}}</div>
+            <button class="account-info-more">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+            </button>
         </div>
     </div>
 
@@ -694,5 +756,56 @@
             modeSwitch.classList.toggle('active');
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            // Get the current URL
+            var currentUrl = window.location.href;
+
+            // Iterate through each list item
+            $(".sidebar-list-item").each(function () {
+                // Get the link URL
+                var linkUrl = $(this).find("a").attr("href");
+                if (currentUrl.indexOf(linkUrl) !== -1) {
+                    // Add the active class to the parent list item
+                    $(this).addClass("active");
+                }
+            });
+        });
+    </script>
+<script>
+    // Wait for the DOM content to be fully loaded
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the profile dropdown list and the account info button
+        let profileDropdownList = document.querySelector('.profile-dropdown-list');
+        let accountInfoBtn = document.querySelector('.account-info');
+
+        // Function to toggle the 'active' class on the dropdown list
+        function toggleDropdown() {
+            profileDropdownList.classList.toggle("active");
+        }
+
+        // Event listener to toggle the dropdown list when the button is clicked
+        accountInfoBtn.addEventListener('click', toggleDropdown);
+
+        // Event listener to close the dropdown list when clicking outside of it
+        window.addEventListener('click', function (event) {
+            // Check if the click target is not the account info button or the dropdown list
+            if (!event.target.closest('.account-info') && !event.target.closest('.profile-dropdown-list')) {
+                // Remove the 'active' class from the dropdown list
+                profileDropdownList.classList.remove('active');
+            }
+        });
+    });
+</script>
+<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Add event listener to the logout form
+                document.getElementById('logoutForm').addEventListener('submit', function() {
+                    // Clear the local storage when the form is submitted (user logs out)
+                    localStorage.clear();
+                });
+            });
+</script>
+
 </body>
 </html>

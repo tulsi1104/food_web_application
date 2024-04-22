@@ -22,10 +22,10 @@
                 <input type="password" name="password" placeholder="Password" required="" autocomplete="current-password">
             </div>
             <div class="form-group">
-                <input type="text" name="phone_number" placeholder="Phone Number">
+                <input type="text" name="phone_number" placeholder="Phone Number (Optional)">
             </div>
             <div class="form-group">
-                <input type="text" name="address" placeholder="Address">
+                <input type="text" name="address" placeholder="Address (Optional)">
             </div>
 
             <button type="submit" class="btn">Register</button>

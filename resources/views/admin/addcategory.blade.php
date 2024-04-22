@@ -10,7 +10,7 @@
        align-items: center;
        justify-content: center;
     /* position: relative; */
-    background: var(--app-bg)
+    background: var(--app-bg);
 
     }
     .container {
@@ -81,16 +81,12 @@
 
 <body>
 <div class="container">
-    <h2>Add Product</h2>
-    <form method="POST" action="{{ route('createproduct.createProduct')}}" enctype="multipart/form-data">
+    <h2>Add Category</h2>
+    <form method="POST" action="{{ route('createcategory.addCategory')}}" enctype="multipart/form-data">
     @csrf
-        <label for="product">Product Name:</label>
-        <input type="text" name="product" required>
-        <label for="description">Description:</label>
-        <input type="text" name="description" required>
         <label for="category">Category:</label>
         <select name="category" required>
-            <option value="Fastfood">Fast Food</option>
+            <option value="Fastfood" selected>Fast Food</option>
             <option value="Breakfast">Breakfast</option>
             <option value="Lunch">Lunch</option>
             <option value="Dinner">Dinner</option>
@@ -105,9 +101,11 @@
         </select>
         <label for="image">Image:</label>
         <input class="input_image" type="file" accept="image/jpeg, image/png" name="image" required>
-        <label for="price">Price:</label>
-        <input type="number" step="0.01" name="price" required>
-        <button type="submit" class="button">Add Item</button>
+
+        <label for="description">Description:</label>
+        <input type="text" name="description" required>
+
+        <button type="submit" class="button">Add Category</button>
     </form>
 </div>
 

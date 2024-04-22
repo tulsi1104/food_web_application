@@ -57,7 +57,7 @@ class AuthController extends Controller
             ]);
             if($customer){
                 // return view('login');
-                return "Registered";
+                return redirect()->route('login.login');
             }
         }
         else{
@@ -80,19 +80,11 @@ class AuthController extends Controller
             $user = Auth::user();
 
             if ($user->role == "customer") {
-                $token = $user->createToken('ApiToken')->accessToken;
-                $data = $user;
-                $data['token'] = $token;
-                // return $data; 
-                return view('userlayout.app',['data'=>$data]);       
+                return redirect()->route('listcategoryatuser.listcategoryatuser'); 
             } 
             else 
-            {
-                $token = $user->createToken('ApiToken')->accessToken;
-                $data = $user;
-                $data['token'] = $token;
-                // return $data;       
-                return view('admin.products'); 
+            {    
+                return redirect()->route('showcustomers.Customers'); 
             }
         }
         // Authentication failed, return error response
@@ -102,18 +94,9 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         // Get the authenticated user's access token
-        if(Auth::guard('api')->user()){
-            $accesstoken=Auth::guard('api')->user()->token();
-
-            \DB::table('oauth_refresh_tokens')
-                ->where('access_token_id',$accesstoken->id)
-                ->update(['revoked'=>true]);
-            $accesstoken->revoke();
-
-            return response(['data'=>'Unauthorized','message'=>"User logout successfully"]);
+        if(Auth::user()){
+            Auth::logout();           
+            return redirect()->route('login.login');
         }
-
     }
-
-
 }
