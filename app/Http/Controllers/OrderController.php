@@ -70,7 +70,10 @@ class OrderController extends Controller
         $user_id = $user->id;
 
         $orders=Order::where('customer_id',$user_id)->get();
-        dd($orders);
+        // dd($orders);
+        if($orders){
+            return view('customer.myorders',['Order'=>$orders]);
+        }
     }
 
     function Orders(Request $request){
@@ -89,11 +92,21 @@ class OrderController extends Controller
                         ->select('products.product_name', 'order_items.*')
                         ->get();
             $items[$order->id] = $orderItems;
+
+            if($order->status == "CONFIRM ORDER"){
+                $button = "OUT FOR DELIVERY";
+            }
+            else if($order->status == "OUT FOR DELIVERY"){
+                $button = "DELIVERED";
+            }
+            else{
+                $button = "CONFIRM ORDER";
+            }
+
+            $order->button = $button;
         }
         // dd($items);
-        if($orders){
-            return view('admin.orders',['Orders'=>$orders,'Items'=>$items]);
-        }
+        return view('admin.orders',['Orders'=>$orders,'Items'=>$items]);
     }
 
     function OrderAction(Request $request,$id){

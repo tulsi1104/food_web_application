@@ -114,10 +114,16 @@
                                         <div class="modal-footer d-flex justify-content-center border-top-0 py-4">
                                             <form action="{{route('confirmorder.ConfirmOrder')}}" method="POST">
                                                 @csrf
+                                                <input type="hidden" name="button" value="{{ $order->button }}">
                                                 <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                                <button type="submit" class="btn btn-primary btn-lg mb-1" style="background-color: #35558a;">Confirm Order</button>
+                                                <button type="submit" class="btn btn-primary btn-lg mb-1" style="background-color: #35558a;">{{ $order->button }}
+                                                </button>
                                             </form>
-                                            <button type="button" class="btn btn-primary btn-lg mb-1" style="background-color: #35558a;">Delete Order</button>
+                                            <form action="{{route('confirmorder.ConfirmOrder')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                                <button type="button" class="btn btn-primary btn-lg mb-1" style="background-color: #35558a;">Delete Order</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -134,9 +140,6 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
-        <div class="card-footer border-0 py-5">
-            <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
         </div>
     </div>
 

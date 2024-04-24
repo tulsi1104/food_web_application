@@ -21,9 +21,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::view('/','customer.home')->name('customer.home');
 
 Route::view('/login','login')->name('login.login');
 Route::view('/signup','signup')->name('signup.signup');
@@ -37,7 +36,6 @@ Route::middleware('auth')->group(function () {
     Route::view('customercategory','customer.category')->name('customer.category');
     Route::view('customerproducts','customer.products')->name('customer.products');
 
-    Route::view('app','customer.home')->name('customer.home');
     Route::post('logout',[AuthController::class,'logout'])->name('logout.logout');
     Route::view('category','user.category')->name('user.category');
     Route::view('order','user.order')->name('user.order');
@@ -83,7 +81,6 @@ Route::middleware('auth')->group(function () {
     Route::get('shoppingcart',[CartController::class,'ListShoppingCartById'])->name('shoppingcart.ListShoppingCartById');
 
     Route::view('shoppingcartproduct','customer.shoppingcart')->name('customer.shoppingcart');
-    Route::view('myorders','customer.myorders')->name('customer.myorders');
 
     Route::post('makeorder',[OrderController::class,'Makeorder'])->name('makeorder.Makeorder');
     Route::view('customerprofile','customer.profile')->name('customer.profile');
@@ -94,7 +91,8 @@ Route::middleware('auth')->group(function () {
     Route::get('totalorderlist',[OrderController::class,'TotalOrderlist'])->name('totalorderlist.TotalOrderlist');
     Route::view('success','customer.success')->name('customer.success');
 
-    
+    Route::view('myorders','customer.myorders')->name('customer.myorders');
+
     Route::get('myorder',[OrderController::class,'MyOrders'])->name('myorder.MyOrders');
     Route::view('orderss','admin.orders')->name('admin.orders');
     Route::get('Orders',[OrderController::class,'Orders'])->name('Orders.Orders');
@@ -108,4 +106,5 @@ Route::middleware('auth')->group(function () {
     //confirm order
     Route::post('confirmorder',[ConfirmOrderController::class,'ConfirmOrder'])->name('confirmorder.ConfirmOrder');
 });
+
 
