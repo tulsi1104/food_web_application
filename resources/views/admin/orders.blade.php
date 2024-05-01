@@ -70,6 +70,7 @@
                         <th scope="col">Order Id</th>
                         <th scope="col">Total</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Delivery Partner</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -86,8 +87,36 @@
                         <td>
                             <span class="badge badge-lg badge-dot"><i class="bg-success"></i>{{$order->status}}</span>
                         </td>
+                        <td>
+                        @if($order->deliverypartner_id == null)
+                                <form action="{{ route('assignpartner.AssignPartner') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="order_id" value="{{$order->id}}">
+                                    <div class="d-flex">
+                                    <select class="form-select form-select-sm" name="partner_id" style="width: 216px;">
+                                            <option value="">Select Delivery Partner</option>
+                                            @foreach($Partner as $partner)
+                                                @if($partner->availability == 'available')
+                                                    <option value="{{ $partner->id }}">{{ $partner->namee }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        <button type="submit" class="btn btn-primary btn-sm mb-1 ms-2" style="background-color: #35558a; padding: 0.25rem 0.5rem;">Assign Partner</button>
+                                    </div>
+                                </form>
+                            @else
+                                @foreach($Partner as $partner)
+                                        @if($partner->id == $order->deliverypartner_id)
+                                        <div class="product-cell image">
+                                            <img src="{{ asset('storage/' . $partner->profile_photo) }}" class="avatar avatar-sm rounded-circle me-2" alt="product">
+                                            <span>{{$partner->namee}}</span>
+                                        </div>
+                                        @endif
+                                @endforeach
+                            @endif
+                        </td>
 
-                        <td class="text-end">
+                            <td class="text-end">
                             <a href="#" class="btn btn-sm btn-neutral modalButton" data-modal-id="{{ 'modal_' . $order->id }}">View</a>
                             <div id="{{ 'modal_' . $order->id }}" class="modal">
                                 <div class="modal-dialog">
@@ -112,29 +141,30 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer d-flex justify-content-center border-top-0 py-4">
+                                        @if($order->status=="DELIVERED")
+                                            <form action="{{route('deleteorder.DeleteOrder')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                                <button type="button" class="btn btn-primary btn-lg mb-1" style="background-color: #35558a;">Delete Order</button>
+                                            </form>
+                                        @else
                                             <form action="{{route('confirmorder.ConfirmOrder')}}" method="POST">
                                                 @csrf
+                                                @foreach($Partner as $partner)
+                                                    @if($partner->id == $order->deliverypartner_id)
+                                                        <input type="hidden" name="partner_id" value="{{ $order->deliverypartner_id }}">
+                                                    @endif
+                                                @endforeach
                                                 <input type="hidden" name="button" value="{{ $order->button }}">
                                                 <input type="hidden" name="order_id" value="{{ $order->id }}">
                                                 <button type="submit" class="btn btn-primary btn-lg mb-1" style="background-color: #35558a;">{{ $order->button }}
                                                 </button>
                                             </form>
-                                            <form action="{{route('confirmorder.ConfirmOrder')}}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                                <button type="button" class="btn btn-primary btn-lg mb-1" style="background-color: #35558a;">Delete Order</button>
-                                            </form>
+                                        @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <form action="{{ route('deleteorder.DeleteOrder') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                <button type="submit" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </form>
                         </td>
                     </tr>
                     @endforeach

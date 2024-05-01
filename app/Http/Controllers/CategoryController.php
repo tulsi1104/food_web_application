@@ -19,6 +19,7 @@ class CategoryController extends Controller
         } else {
             $imagePath = null;
         }
+        
         $create=Category::create([
             'category_name'=>$category,
             'description'=>$description,

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Deliverypartner;
 use App\Models\Order;
 use App\Models\Order_item;
 use App\Models\Orderlist;
@@ -93,11 +94,14 @@ class OrderController extends Controller
                         ->get();
             $items[$order->id] = $orderItems;
 
-            if($order->status == "CONFIRM ORDER"){
+            if($order->status == "CONFIRM ORDER" || $order->status == "DELIVERY PARTNER ASSIGNED"){
                 $button = "OUT FOR DELIVERY";
             }
             else if($order->status == "OUT FOR DELIVERY"){
                 $button = "DELIVERED";
+            }
+            else if($order->status == "DELIVERED"){
+                $button="";
             }
             else{
                 $button = "CONFIRM ORDER";
@@ -105,8 +109,10 @@ class OrderController extends Controller
 
             $order->button = $button;
         }
+
+        $partners=Deliverypartner::all();
         // dd($items);
-        return view('admin.orders',['Orders'=>$orders,'Items'=>$items]);
+        return view('admin.orders',['Orders'=>$orders,'Items'=>$items,'Partner'=>$partners]);
     }
 
     function OrderAction(Request $request,$id){

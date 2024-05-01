@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Deliverypartner;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,7 @@ class ConfirmOrderController extends Controller
     function ConfirmOrder(Request $request){
         $order_id=$request->order_id;
         $button=$request->button;
+        $partner_id=$request->partner_id;
 
         $order=Order::find($order_id);
         if($order){
@@ -35,7 +37,10 @@ class ConfirmOrderController extends Controller
                     'status'=>"DELIVERED"
                 ]);
                 if($updated_status){
-                    
+                    $partner=Deliverypartner::find($partner_id);
+                    $partner->update([
+                        'availability'=>'available'
+                    ]);
                     return redirect()->route('Orders.Orders');
                 }
             }

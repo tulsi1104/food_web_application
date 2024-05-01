@@ -49,7 +49,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <span class="h6 font-semibold text-muted text-sm d-block mb-2">Budget</span>
-                                        <span class="h3 font-bold mb-0">$750.90</span>
+                                        <span class="h3 font-bold mb-0">&#8377;{{$Budget}}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
@@ -72,7 +72,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Orders</span>
-                                        <span class="h3 font-bold mb-0">215</span>
+                                        <span class="h3 font-bold mb-0">{{$TotalOrder}}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -95,7 +95,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <span class="h6 font-semibold text-muted text-sm d-block mb-2">Pending Orders</span>
-                                        <span class="h3 font-bold mb-0">1.400</span>
+                                        <span class="h3 font-bold mb-0">{{$PendingOrder}}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -118,7 +118,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <span class="h6 font-semibold text-muted text-sm d-block mb-2">Delivered Orders</span>
-                                        <span class="h3 font-bold mb-0">95%</span>
+                                        <span class="h3 font-bold mb-0">{{$DeliveredOrder}}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
@@ -136,62 +136,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="card shadow border-0 mb-7">
-                    <div class="card-header">
-                        <h5 class="mb-0">Applications</h5>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-hover table-nowrap">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Order Date</th>
-                                    <th scope="col">Order Name</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col">Status</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($customer as $customerr)
-                                <tr>
-                                    <td>
-                                        <img alt="..." src="{{ asset('storage/user.png') }}" class="avatar avatar-sm rounded-circle me-2">
-                                        <a class="text-heading font-semibold" href="#">
-                                            {{$customerr->name}}
-                                        </a>
-                                    </td>
-                                    <td>
-                                        Feb 15, 2021
-                                    </td>
-                                    <td>
-                                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2">
-                                        <a class="text-heading font-semibold" href="#">
-                                            Dribbble
-                                        </a>
-                                    </td>
-                                    <td>
-                                        $3.500
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-lg badge-dot">
-                                            <i class="bg-success"></i>Pending
-                                        </span>
-                                    </td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
-                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="card-footer border-0 py-5">
-                        <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
-                    </div>
+                <div class="card card-danger">
+                <div class="card-header">
+                <h3 class="card-title">Pie Chart</h3>
+                <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+                </button>
+                </div>
+                </div>
+                <div class="card-body">
+                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+
+                </div>
+
                 </div>
             </div>
         </main>

@@ -99,4 +99,29 @@ class AuthController extends Controller
             return redirect()->route('login.login');
         }
     }
+
+    public function change_password(Request $request){
+        // dd($request->all());
+        $id=Auth::user()->id;
+        $current=$request->current_password;
+        $new=$request->new_password;
+
+        // dd($current_hashed);
+        // dd($new_hashed);
+
+        $password=Auth::user()->password;
+        // // dd($password);
+        $passwordMatches = Hash::check($current, $password);
+        // dd($passwordMatches);
+        if($passwordMatches){
+            $user=User::find($id);
+            $new_hashed=Hash::make($new);
+            $updated=$user->update([
+                'password'=>$new_hashed
+            ]);
+            if($updated){
+                return redirect()->route('customerinfo.CustomerInfo');
+            }
+        }
+    }
 }

@@ -80,7 +80,7 @@
         <div id="cid_12" class="form-input-wide" data-layout="half"> <span class="form-sub-label-container" style="vertical-align:top"><input type="email" id="input_12" name="q12_email" class="form-textbox validate[Email]" data-defaultvalue="" autoComplete="section-input_12 email" style="width:310px" size="310" data-component="email" aria-labelledby="label_12 sublabel_input_12" value="{{Auth::user()->email}}" /><label class="form-sub-label" for="input_12" id="sublabel_input_12" style="min-height:13px">example@example.com</label></span> </div>
       </li>
       <li class="form-line form-line-column form-col-2" data-type="control_phone" id="id_11"><label class="form-label form-label-top" id="label_11" for="input_11_full"> Phone Number </label>
-        <div id="cid_11" class="form-input-wide" data-layout="half"> <span class="form-sub-label-container" style="vertical-align:top"><input type="tel" id="input_11_full" name="phone_number" data-type="mask-number" class="mask-phone-number form-textbox validate[Fill Mask]" data-defaultvalue="" autoComplete="section-input_11 tel-national" style="width:310px" data-masked="true" placeholder="(000) 000-0000" data-component="phone" aria-labelledby="label_11" value="" /></span> </div>
+        <div id="cid_11" class="form-input-wide" data-layout="half"> <span class="form-sub-label-container" style="vertical-align:top"><input type="tel" id="input_11_full" name="phone_number" data-type="mask-number" class="mask-phone-number form-textbox validate[Fill Mask]" data-defaultvalue="" autoComplete="section-input_11 tel-national" style="width:310px" data-masked="true" placeholder="(000) 000-0000" data-component="phone" aria-labelledby="label_11" value="{{$phone_number}}" /></span> </div>
       </li>
       <li class="form-line jf-required" data-type="control_address" id="id_14" data-compound-hint=",,,,Please Select,,Please Select,"><label class="form-label form-label-top form-label-auto" id="label_14" for="input_14_addr_line1" aria-hidden="false"> Address<span class="form-required">*</span> </label>
         <div id="cid_14" class="form-input-wide jf-required" data-layout="full">
@@ -88,7 +88,7 @@
             <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
               <span class="form-address-line form-address-street-line jsTest-address-lineField">
                 <span class="form-sub-label-container" style="vertical-align:top">
-                  <input type="text" id="input_14_addr_line1" name="address" class="form-textbox validate[required] form-address-line" data-defaultvalue="" autoComplete="section-input_14 address-line1" data-component="address_line_1" aria-labelledby="label_14 sublabel_14_addr_line1" required="" value="" />
+                  <input type="text" id="input_14_addr_line1" name="address" class="form-textbox validate[required] form-address-line" data-defaultvalue="" autoComplete="section-input_14 address-line1" data-component="address_line_1" aria-labelledby="label_14 sublabel_14_addr_line1" required="" value="{{$street}},{{$area}}" />
                   <label class="form-sub-label" for="input_14_addr_line1" id="sublabel_14_addr_line1" style="min-height:13px">
                     Street Address
                   </label>
@@ -98,7 +98,7 @@
             <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
               <span class="form-address-line form-address-city-line jsTest-address-lineField ">
                 <span class="form-sub-label-container" style="vertical-align:top">
-                  <input type="text" id="input_14_city" name="city" class="form-textbox validate[required] form-address-city" data-defaultvalue="" autoComplete="section-input_14 address-level2" data-component="city" aria-labelledby="label_14 sublabel_14_city" required="" value="" />
+                  <input type="text" id="input_14_city" name="city" class="form-textbox validate[required] form-address-city" data-defaultvalue="" autoComplete="section-input_14 address-level2" data-component="city" aria-labelledby="label_14 sublabel_14_city" required="" value="{{$city}}" />
                   <label class="form-sub-label" for="input_14_city" id="sublabel_14_city" style="min-height:13px">
                   City
                   </label>
@@ -106,7 +106,7 @@
               </span>
               <span class="form-address-line form-address-state-line jsTest-address-lineField ">
                 <span class="form-sub-label-container" style="vertical-align:top">
-                  <input type="text" id="input_14_state" name="state" class="form-textbox validate[required] form-address-state" data-defaultvalue="" autoComplete="section-input_14 address-level1" data-component="state" aria-labelledby="label_14 sublabel_14_state" required="" value="" />
+                  <input type="text" id="input_14_state" name="state" class="form-textbox validate[required] form-address-state" data-defaultvalue="" autoComplete="section-input_14 address-level1" data-component="state" aria-labelledby="label_14 sublabel_14_state" required="" value="{{$state}}" />
                   <label class="form-sub-label" for="input_14_state" id="sublabel_14_state" style="min-height:13px">
                     State / Province
                   </label>
@@ -116,7 +116,7 @@
             <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
               <span class="form-address-line form-address-zip-line jsTest-address-lineField ">
                 <span class="form-sub-label-container" style="vertical-align:top">
-                  <input type="text" id="input_14_postal" name="postal_code" class="form-textbox validate[required] form-address-postal" data-defaultvalue="" autoComplete="section-input_14 postal-code" data-component="zip" aria-labelledby="label_14 sublabel_14_postal" required="" value="" />
+                  <input type="text" id="input_14_postal" name="postal_code" class="form-textbox validate[required] form-address-postal" data-defaultvalue="" autoComplete="section-input_14 postal-code" data-component="zip" aria-labelledby="label_14 sublabel_14_postal" required="" value="{{$zipcode}}" />
                   <label class="form-sub-label" for="input_14_postal" id="sublabel_14_postal" style="min-height:13px">
                     Postal / Zip Code
                   </label>

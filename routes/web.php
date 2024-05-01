@@ -6,6 +6,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConfirmOrderController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DeliveryPartnerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -105,6 +106,19 @@ Route::middleware('auth')->group(function () {
 
     //confirm order
     Route::post('confirmorder',[ConfirmOrderController::class,'ConfirmOrder'])->name('confirmorder.ConfirmOrder');
+    Route::view('viewpartners','admin.deliverypartners')->name('admin.deliverypartners');
+    Route::view('addpartner','admin.addpartner')->name('admin.addpartner');
+    Route::post('adddpartner',[DeliveryPartnerController::class,'AddPartner'])->name('adddpartner.AddPartner');
+    Route::get('listpartners',[DeliveryPartnerController::class,'partners'])->name('listpartners.partners');
+    Route::post('assignpartner',[DeliveryPartnerController::class,'AssignPartner'])->name('assignpartner.AssignPartner');
+    Route::post('makeoffline',[DeliveryPartnerController::class,'MakeOffline'])->name('makeoffline.MakeOffline');
+
+    Route::get('customerinfo',[CustomerController::class,'CustomerInfo'])->name('customerinfo.CustomerInfo');
+
+    //change password
+    
+    Route::post('changepassword',[AuthController::class,'change_password'])->name('changepassword.change_password');
+    Route::post('updatecustomer',[CustomerController::class,'UpdateCustomer'])->name('updatecustomer.UpdateCustomer');
 });
 
 
