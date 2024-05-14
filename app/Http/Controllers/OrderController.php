@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Order_item;
 use App\Models\Orderlist;
 use App\Models\Product;
+use App\Models\Shopping_cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -60,9 +61,20 @@ class OrderController extends Controller
             }
     
             // Create order items
-            Order_item::insert($orderItemsData);
-    
-            return view('customer.success');
+            $order_added=Order_item::insert($orderItemsData);
+            if ($order_added) {
+                foreach ($orderItemsData as $itemdata) {
+                    // Get the product ID for the current item
+                    $product_id = $itemdata['product_id'];
+                    
+                    // Delete the corresponding item from the shopping_cart table
+                    Shopping_cart::where('product_id', $product_id)
+                                 ->where('user_id', $user_id)
+                                 ->delete();
+                }
+                
+                return view('customer.success');
+            }
         }
     }
 
@@ -72,8 +84,17 @@ class OrderController extends Controller
 
         $orders=Order::where('customer_id',$user_id)->get();
         // dd($orders);
+        foreach($orders as $order){
+            $orderItems = DB::table('order_items')
+                        ->join('products', 'order_items.product_id', '=', 'products.id')
+                        ->where('order_items.order_id', $order->id)
+                        ->select('products.*', 'order_items.*')
+                        ->get();
+            $items[$order->id] = $orderItems;
+        }
+
         if($orders){
-            return view('customer.myorders',['Order'=>$orders]);
+            return view('customer.myorders',['Order'=>$orders,'Items'=>$items]);
         }
     }
 

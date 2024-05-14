@@ -30,10 +30,10 @@ Route::view('/signup','signup')->name('signup.signup');
 
 Route::post('registercustomer',[AuthController::class,'register'])->name('registercustomer.register');
 Route::post('loginuser',[AuthController::class,'login'])->name('loginuser.login');
+Route::view('testapp','test')->name('test.test');
 
 
 Route::middleware('auth')->group(function () {
-    Route::view('testapp','test')->name('test.test');
     Route::view('customercategory','customer.category')->name('customer.category');
     Route::view('customerproducts','customer.products')->name('customer.products');
 
@@ -119,6 +119,14 @@ Route::middleware('auth')->group(function () {
     
     Route::post('changepassword',[AuthController::class,'change_password'])->name('changepassword.change_password');
     Route::post('updatecustomer',[CustomerController::class,'UpdateCustomer'])->name('updatecustomer.UpdateCustomer');
+    Route::view('customerinvoice','customer.invoice')->name('customer.invoice');
+    Route::get('invoice/{orderId}',[CustomerController::class,'Invoice'])->name('invoice.Invoice');
+    
 });
+
+use Illuminate\Http\Request;
+
+
+
 
 

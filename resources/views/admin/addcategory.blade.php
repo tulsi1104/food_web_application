@@ -86,6 +86,7 @@
     @csrf
         <label for="category">Category:</label>
         <select name="category" required>
+            <option selected>Fast Food</option>
             <option value="Fastfood" selected>Fast Food</option>
             <option value="Breakfast">Breakfast</option>
             <option value="Lunch">Lunch</option>

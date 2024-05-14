@@ -1,6 +1,15 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <style>
+        .app-icon {
+        color: var(--sidebar-main-color);
+        }
+        .app-icon svg {
+        width: 24px;
+        height: 24px;
+        }
+    </style>
 </head>
 <div class="bg-white">
   <header class="absolute inset-x-0 top-0 z-50">
@@ -8,19 +17,22 @@
     <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global" style="position: fixed; top: 0; width: 100%;">
       <div class="flex lg:flex-1">
         <a href="#" class="-m-1.5 p-1.5">
-          <span class="sr-only">Your Company</span>
-          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+        <div class="app-icon">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M507.606 371.054a187.217 187.217 0 00-23.051-19.606c-17.316 19.999-37.648 36.808-60.572 50.041-35.508 20.505-75.893 31.452-116.875 31.711 21.762 8.776 45.224 13.38 69.396 13.38 49.524 0 96.084-19.286 131.103-54.305a15 15 0 004.394-10.606 15.028 15.028 0 00-4.395-10.615zM27.445 351.448a187.392 187.392 0 00-23.051 19.606C1.581 373.868 0 377.691 0 381.669s1.581 7.793 4.394 10.606c35.019 35.019 81.579 54.305 131.103 54.305 24.172 0 47.634-4.604 69.396-13.38-40.985-.259-81.367-11.206-116.879-31.713-22.922-13.231-43.254-30.04-60.569-50.039zM103.015 375.508c24.937 14.4 53.928 24.056 84.837 26.854-53.409-29.561-82.274-70.602-95.861-94.135-14.942-25.878-25.041-53.917-30.063-83.421-14.921.64-29.775 2.868-44.227 6.709-6.6 1.576-11.507 7.517-11.507 14.599 0 1.312.172 2.618.512 3.885 15.32 57.142 52.726 100.35 96.309 125.509zM324.148 402.362c30.908-2.799 59.9-12.454 84.837-26.854 43.583-25.159 80.989-68.367 96.31-125.508.34-1.267.512-2.573.512-3.885 0-7.082-4.907-13.023-11.507-14.599-14.452-3.841-29.306-6.07-44.227-6.709-5.022 29.504-15.121 57.543-30.063 83.421-13.588 23.533-42.419 64.554-95.862 94.134zM187.301 366.948c-15.157-24.483-38.696-71.48-38.696-135.903 0-32.646 6.043-64.401 17.945-94.529-16.394-9.351-33.972-16.623-52.273-21.525-8.004-2.142-16.225 2.604-18.37 10.605-16.372 61.078-4.825 121.063 22.064 167.631 16.325 28.275 39.769 54.111 69.33 73.721zM324.684 366.957c29.568-19.611 53.017-45.451 69.344-73.73 26.889-46.569 38.436-106.553 22.064-167.631-2.145-8.001-10.366-12.748-18.37-10.605-18.304 4.902-35.883 12.176-52.279 21.529 11.9 30.126 17.943 61.88 17.943 94.525.001 64.478-23.58 111.488-38.702 135.912zM266.606 69.813c-2.813-2.813-6.637-4.394-10.615-4.394a15 15 0 00-10.606 4.394c-39.289 39.289-66.78 96.005-66.78 161.231 0 65.256 27.522 121.974 66.78 161.231 2.813 2.813 6.637 4.394 10.615 4.394s7.793-1.581 10.606-4.394c39.248-39.247 66.78-95.96 66.78-161.231.001-65.256-27.511-121.964-66.78-161.231z"/></svg>         
+        </div>
+        
         </a>
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
-        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Product</a>
-        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Features</a>
+        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Products</a>
+        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Offers</a>
         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Marketplace</a>
-        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Company</a>
+        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">About Us</a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a href="{{route('login.login')}}" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
       </div>
+      
     </nav>
   </header>
 
@@ -126,6 +138,7 @@
   }
   ```
 -->
+
 <div class="bg-white">
   <div class="pt-6">
     <nav aria-label="Breadcrumb">
@@ -180,7 +193,7 @@
       <!-- Options -->
       <div class="mt-4 lg:row-span-3 lg:mt-0">
         <h2 class="sr-only">Product information</h2>
-        <p class="text-3xl tracking-tight text-gray-900">$192</p>
+        <p class="text-3xl tracking-tight text-gray-900">Pizza</p>
 
         <!-- Reviews -->
         <div class="mt-6">
@@ -210,140 +223,64 @@
         </div>
 
         <form class="mt-10">
-          <!-- Colors -->
-          <div>
-            <h3 class="text-sm font-medium text-gray-900">Color</h3>
 
-            <fieldset class="mt-4">
-              <legend class="sr-only">Choose a color</legend>
-              <div class="flex items-center space-x-3">
-                <!--
-                  Active and Checked: "ring ring-offset-1"
-                  Not Active and Checked: "ring-2"
-                -->
-                <label class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-400">
-                  <input type="radio" name="color-choice" value="White" class="sr-only" aria-labelledby="color-choice-0-label">
-                  <span id="color-choice-0-label" class="sr-only">White</span>
-                  <span aria-hidden="true" class="h-8 w-8 bg-white rounded-full border border-black border-opacity-10"></span>
-                </label>
-                <!--
-                  Active and Checked: "ring ring-offset-1"
-                  Not Active and Checked: "ring-2"
-                -->
-                <label class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-400">
-                  <input type="radio" name="color-choice" value="Gray" class="sr-only" aria-labelledby="color-choice-1-label">
-                  <span id="color-choice-1-label" class="sr-only">Gray</span>
-                  <span aria-hidden="true" class="h-8 w-8 bg-gray-200 rounded-full border border-black border-opacity-10"></span>
-                </label>
-                <!--
-                  Active and Checked: "ring ring-offset-1"
-                  Not Active and Checked: "ring-2"
-                -->
-                <label class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-900">
-                  <input type="radio" name="color-choice" value="Black" class="sr-only" aria-labelledby="color-choice-2-label">
-                  <span id="color-choice-2-label" class="sr-only">Black</span>
-                  <span aria-hidden="true" class="h-8 w-8 bg-gray-900 rounded-full border border-black border-opacity-10"></span>
-                </label>
-              </div>
-            </fieldset>
-          </div>
+<!-- Sizes -->
+<div class="mt-10">
+  <div class="flex items-center justify-between">
+    <h3 class="text-sm font-medium text-gray-900">Size</h3>
+    <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">Size guide</a>
+  </div>
 
-          <!-- Sizes -->
-          <div class="mt-10">
-            <div class="flex items-center justify-between">
-              <h3 class="text-sm font-medium text-gray-900">Size</h3>
-              <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">Size guide</a>
-            </div>
+  <fieldset class="mt-4">
+    <legend class="sr-only">Choose a size</legend>
+    <div class="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
+      <!-- Active: "ring-2 ring-indigo-500" -->
+      <label class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-not-allowed bg-gray-50 text-gray-200">
+        <input type="radio" name="size-choice" value="Small" disabled class="sr-only" aria-labelledby="size-choice-0-label">
+        <span id="size-choice-0-label">Small</span>
+        <span aria-hidden="true" class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200">
+          <svg class="absolute inset-0 h-full w-full stroke-2 text-gray-200" viewBox="0 0 100 100" preserveAspectRatio="none" stroke="currentColor">
+            <line x1="0" y1="100" x2="100" y2="0" vector-effect="non-scaling-stroke" />
+          </svg>
+        </span>
+      </label>
+      <!-- Active: "ring-2 ring-indigo-500" -->
+      <label class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
+        <input type="radio" name="size-choice" value="Medium" class="sr-only" aria-labelledby="size-choice-1-label">
+        <span id="size-choice-1-label">Medium</span>
+        <!--
+          Active: "border", Not Active: "border-2"
+          Checked: "border-indigo-500", Not Checked: "border-transparent"
+        -->
+        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+      </label>
+      <!-- Active: "ring-2 ring-indigo-500" -->
+      <label class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
+        <input type="radio" name="size-choice" value="Large" class="sr-only" aria-labelledby="size-choice-2-label">
+        <span id="size-choice-2-label">Large</span>
+        <!--
+          Active: "border", Not Active: "border-2"
+          Checked: "border-indigo-500", Not Checked: "border-transparent"
+        -->
+        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+      </label>
+      <!-- Active: "ring-2 ring-indigo-500" -->
+      <label class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
+        <input type="radio" name="size-choice" value="Extra Large" class="sr-only" aria-labelledby="size-choice-3-label">
+        <span id="size-choice-3-label">Extra Large</span>
+        <!--
+          Active: "border", Not Active: "border-2"
+          Checked: "border-indigo-500", Not Checked: "border-transparent"
+        -->
+        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+      </label>
+    </div>
+  </fieldset>
+</div>
 
-            <fieldset class="mt-4">
-              <legend class="sr-only">Choose a size</legend>
-              <div class="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                <!-- Active: "ring-2 ring-indigo-500" -->
-                <label class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-not-allowed bg-gray-50 text-gray-200">
-                  <input type="radio" name="size-choice" value="XXS" disabled class="sr-only" aria-labelledby="size-choice-0-label">
-                  <span id="size-choice-0-label">XXS</span>
-                  <span aria-hidden="true" class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200">
-                    <svg class="absolute inset-0 h-full w-full stroke-2 text-gray-200" viewBox="0 0 100 100" preserveAspectRatio="none" stroke="currentColor">
-                      <line x1="0" y1="100" x2="100" y2="0" vector-effect="non-scaling-stroke" />
-                    </svg>
-                  </span>
-                </label>
-                <!-- Active: "ring-2 ring-indigo-500" -->
-                <label class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
-                  <input type="radio" name="size-choice" value="XS" class="sr-only" aria-labelledby="size-choice-1-label">
-                  <span id="size-choice-1-label">XS</span>
-                  <!--
-                    Active: "border", Not Active: "border-2"
-                    Checked: "border-indigo-500", Not Checked: "border-transparent"
-                  -->
-                  <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                </label>
-                <!-- Active: "ring-2 ring-indigo-500" -->
-                <label class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
-                  <input type="radio" name="size-choice" value="S" class="sr-only" aria-labelledby="size-choice-2-label">
-                  <span id="size-choice-2-label">S</span>
-                  <!--
-                    Active: "border", Not Active: "border-2"
-                    Checked: "border-indigo-500", Not Checked: "border-transparent"
-                  -->
-                  <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                </label>
-                <!-- Active: "ring-2 ring-indigo-500" -->
-                <label class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
-                  <input type="radio" name="size-choice" value="M" class="sr-only" aria-labelledby="size-choice-3-label">
-                  <span id="size-choice-3-label">M</span>
-                  <!--
-                    Active: "border", Not Active: "border-2"
-                    Checked: "border-indigo-500", Not Checked: "border-transparent"
-                  -->
-                  <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                </label>
-                <!-- Active: "ring-2 ring-indigo-500" -->
-                <label class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
-                  <input type="radio" name="size-choice" value="L" class="sr-only" aria-labelledby="size-choice-4-label">
-                  <span id="size-choice-4-label">L</span>
-                  <!--
-                    Active: "border", Not Active: "border-2"
-                    Checked: "border-indigo-500", Not Checked: "border-transparent"
-                  -->
-                  <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                </label>
-                <!-- Active: "ring-2 ring-indigo-500" -->
-                <label class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
-                  <input type="radio" name="size-choice" value="XL" class="sr-only" aria-labelledby="size-choice-5-label">
-                  <span id="size-choice-5-label">XL</span>
-                  <!--
-                    Active: "border", Not Active: "border-2"
-                    Checked: "border-indigo-500", Not Checked: "border-transparent"
-                  -->
-                  <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                </label>
-                <!-- Active: "ring-2 ring-indigo-500" -->
-                <label class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
-                  <input type="radio" name="size-choice" value="2XL" class="sr-only" aria-labelledby="size-choice-6-label">
-                  <span id="size-choice-6-label">2XL</span>
-                  <!--
-                    Active: "border", Not Active: "border-2"
-                    Checked: "border-indigo-500", Not Checked: "border-transparent"
-                  -->
-                  <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                </label>
-                <!-- Active: "ring-2 ring-indigo-500" -->
-                <label class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm">
-                  <input type="radio" name="size-choice" value="3XL" class="sr-only" aria-labelledby="size-choice-7-label">
-                  <span id="size-choice-7-label">3XL</span>
-                  <!--
-                    Active: "border", Not Active: "border-2"
-                    Checked: "border-indigo-500", Not Checked: "border-transparent"
-                  -->
-                  <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                </label>
-              </div>
-            </fieldset>
-          </div>
+<button type="submit" class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to bag</button>
+</form>
 
-          <button type="submit" class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to bag</button>
-        </form>
       </div>
 
       <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
@@ -379,6 +316,7 @@
     </div>
   </div>
 </div>
+
 <div class="bg-white py-24 sm:py-32">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
@@ -394,9 +332,11 @@
         <dt class="text-base leading-7 text-gray-600">New users annually</dt>
         <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">46,000</dd>
       </div>
+      
     </dl>
   </div>
 </div>
+
 <div class="bg-white py-24 sm:py-32">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <h2 class="text-center text-lg font-semibold leading-8 text-gray-900">Trusted by the world’s most innovative teams</h2>
@@ -423,6 +363,7 @@
   }
   ```
 -->
+
 <div class="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24 lg:py-32">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
